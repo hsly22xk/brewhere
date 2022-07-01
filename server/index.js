@@ -4,6 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
+require('dotenv').config();
 
 const usersRouter = require('./router/usersRouter.js');
 // const breweryRouter = require('./router/breweryRouter.js');
