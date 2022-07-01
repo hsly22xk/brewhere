@@ -1,4 +1,7 @@
-const { checkAccessToken } = require('../controllers/tokenFunctions');
+const {
+  checkAccessToken,
+  checkRefreshToken,
+} = require('../controllers/tokenFunctions');
 
 module.exports = (req, res) => {
   const accessToken = checkAccessToken(req.cookies.accessToken);
