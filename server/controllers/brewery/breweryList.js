@@ -1,11 +1,12 @@
-const { brewery } = require('../../models');
+const { breweries } = require('../../models');
 
-module.exports = async(req, res) => {
+module.exports = async (req, res) => {
   try {
-    const storeInfo = await brewery.findAll();
-    res.status(200).json({data: {storeInfo: storeInfo}, 
-    message: 'find successfully'});
-  } catch(err) {
-    res.status(404).json({message: '존재하지 않는 id입니다'});
+    const storeInfo = await breweries.findAll();
+    res
+      .status(200)
+      .json({ data: { storeInfo }, message: '브루어리 정보 찾기 성공' });
+  } catch (err) {
+    res.status(404).json({ message: '존재하지 않는 id입니다' });
   }
-}
+};
