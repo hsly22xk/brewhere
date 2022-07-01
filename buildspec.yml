@@ -1,25 +1,15 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 14
-    commands:
-      - echo node version check
-      - node -v
-      - npm -v
   pre_build:
     commands:
       - cd client
-      - sudo npm install
+      - npm install
   build:
     commands:
       - npm run build
-  post_build:
-    command:
-      - echo post Building...
+
 artifacts:
   files:
     - '**/*'
-  discard-paths: no
   base-directory: client/build
