@@ -9,7 +9,6 @@ const {
 
 module.exports = async (req, res) => {
   const { userEmail, password } = req.body;
-<<<<<<< HEAD
   if (!userEmail) {
     return res.status(400).json({ message: '이메일 주소를 확인해주세요' });
   } else if (!password) {
@@ -33,35 +32,14 @@ module.exports = async (req, res) => {
           const refreshToken = generateRefreshToken(userInfo.dataValues);
           sendAccessToken(res, accessToken);
           sendRefreshToken(res, refreshToken);
-          return res
-            .status(200)
-            .json({
-              data: { accessToken },
-              message: '로그인에 성공하였습니다',
-            });
+          return res.status(200).json({
+            data: { accessToken },
+            message: '로그인에 성공하였습니다',
+          });
         }
       }
     } catch (err) {
       console.error(err);
-=======
-  try {
-    const userInfo = await users.findOne({
-      where: { userEmail },
-    });
-    if (!userInfo) {
-      return res
-        .status(401)
-        .json({ message: '이메일 혹은 비밀번호를 확인해주세요' });
-    } else {
-      delete userInfo.dataValues.password;
-      const accessToken = generateAccessToken(userInfo.dataValues);
-      const refreshToken = generateRefreshToken(userInfo.dataValues);
-      sendAccessToken(res, accessToken);
-      sendRefreshToken(res, refreshToken);
-      return res
-        .status(200)
-        .json({ data: { accessToken }, message: '로그인에 성공하였습니다' });
->>>>>>> 4f3e389c974048e998a7ed4fe3926db02a7adbfe
     }
   }
 };
